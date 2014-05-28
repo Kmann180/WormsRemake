@@ -76,7 +76,7 @@ namespace ConsoleApplication1
             base.Draw(gameTime);
 
             _levelOne.Draw();
-            if( !IntersectsPixels(_playerOne.Bounds, _playerOne.ColorData, _ground.Bounds , _ground.ColorData))
+            if( !Collision(_playerOne, _ground))
             {
                 
             }
@@ -126,6 +126,19 @@ namespace ConsoleApplication1
                 }   
             }
             return false;
+        }
+
+        bool Collision(Sprite spriteA, Sprite spriteB)
+        {
+            if (IntersectsPixels(spriteA.Bounds, spriteA.ColorData, spriteB.Bounds, spriteB.ColorData))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
     }
