@@ -1,0 +1,17 @@
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\MonoGame.Framework.dll
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\OpenTK.dll
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\Tao.Sdl.dll
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\Lidgren.Network.dll
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\Content\crate_sideup.png
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\Content\CRATE_5.png
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\Content\red_square.png
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\Content\yellow_square.png
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\Content\blue_test_thing.png
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\Content\deform.png
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\Content\bg.png
+C:\Users\Student\Documents\GitHub\MonoGame_Game\KBS_Game\ConsoleApplication1\ConsoleApplication1\bin\Debug\Content\terrain.png
