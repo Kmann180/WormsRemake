@@ -16,7 +16,8 @@ namespace WormsRemake
             {
                 this.AddTexture("TestTerrain", "Default");
                 this._activeTexture = this._textures["Default"];
-    
+                this.SwitchActiveTexture("Default");
+                this._container.World.CollisionHandler.RetrieveTextureData("terrain", ref this._activeTextureData);
             }
             public override void Update(GameTime gameTime)
             {

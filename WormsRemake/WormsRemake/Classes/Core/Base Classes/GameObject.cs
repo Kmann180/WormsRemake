@@ -60,21 +60,12 @@ namespace WormsRemake
 
             public void Send(Message message)
             {
-                foreach (KeyValuePair<string, Component> comp in this._components)
+                foreach (string s in message.ValidRecipients)
                 {
-                    if (message.ValidRecipients.Contains(comp.Key))
-                    {
-                        this._components[comp.Key].Recieve(message);
-                    }
+                    s.ToLower();
                 }
-            }
-            public void Send(Message message, Dictionary<string, object> attachments)
-            {
 
-                foreach (KeyValuePair<string, Object> data in attachments)
-                {
-                    message.Attach(data.Key, data.Value);
-                }
+                message.Content.ToUpper();
 
                 foreach (KeyValuePair<string, Component> comp in this._components)
                 {

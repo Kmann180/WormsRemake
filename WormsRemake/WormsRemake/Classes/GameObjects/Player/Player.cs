@@ -27,6 +27,7 @@ namespace WormsRemake
                 this.AddComponent("transform", new PlayerTransform(_parent, this));
             }
 
+            //Bandaid fix, I don't like this cause it exposes part of the rendering component.
             public override void Update(GameTime gameTime)
             {
                 this._components["input"].Update(gameTime);

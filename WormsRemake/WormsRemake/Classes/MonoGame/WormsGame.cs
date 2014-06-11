@@ -37,6 +37,8 @@ namespace WormsRemake
         {
             // TODO: Add your initialization logic here
             this._world = new World(this);
+            this._graphics.PreferredBackBufferHeight = 480;
+            this._graphics.PreferredBackBufferWidth = 640; 
             base.Initialize();
         }
 

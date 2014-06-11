@@ -12,23 +12,23 @@ namespace WormsRemake
         public class Message
         {
             private string _message;
-            private Dictionary<string, object> _attachments;
+            private object _attachment;
             private List<string> _validRecipients;
 
             public string Content { get { return this._message; } set { this._message = value; } }
-            public Dictionary<string, object> Attachments { get { return this._attachments; } }
+            public object Attachment { get { return this._attachment; } }
             public List<string> ValidRecipients { get { return this._validRecipients; } set { this._validRecipients = value; } }
 
-            public void Attach(string name, object attachment)
+            public void Attach(object attachment)
             {
-                this._attachments[name] = attachment;
+                this._attachment = attachment;
             }
 
             public Message(string message, params string[] listeners )
             {
                 this._message = message.ToUpper();
                 this._validRecipients = new List<string>();
-                this._attachments = new Dictionary<string, object>();
+                this._attachment = null;
 
                 foreach (string s in listeners)
                 {

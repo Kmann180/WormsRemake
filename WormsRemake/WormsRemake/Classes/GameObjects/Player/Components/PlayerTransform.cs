@@ -18,8 +18,8 @@ namespace WormsRemake
             }
             public override void Update(GameTime gameTime)
             {
-                //var delta = (float)gameTime.ElapsedGameTime.TotalSeconds * 100;
-                _container.Position += _container.Velocity; //* delta);
+                var delta = (float)gameTime.ElapsedGameTime.TotalSeconds * 100;
+                _container.Position += _container.Velocity;// *delta;
             }
             public override void Recieve(Message message)
             {
@@ -27,16 +27,16 @@ namespace WormsRemake
                 switch (recieved)
                 {
                     case ("MOVE_DOWN"):
-                        _container.Velocity = new Vector2(0, 1);
+                        _container.Velocity = new Vector2(_container.Velocity.X, 1);
                         break;
                     case ("MOVE_UP"):
-                        _container.Velocity = new Vector2(0, -1);
+                        _container.Velocity = new Vector2(_container.Velocity.X, -1);
                         break;
                     case ("MOVE_LEFT"):
-                        _container.Velocity = new Vector2(-1, 0);
+                        _container.Velocity = new Vector2(-1, _container.Velocity.Y);
                         break;
                     case ("MOVE_RIGHT"):
-                        _container.Velocity = new Vector2(1, 0);
+                        _container.Velocity = new Vector2(1, _container.Velocity.Y);
                         break;
                 }
 

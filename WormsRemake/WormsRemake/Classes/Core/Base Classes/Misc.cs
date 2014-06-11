@@ -8,6 +8,18 @@ namespace WormsRemake
     {
         class Utilities
         {
+            struct CollisionData
+            {
+                public Rectangle _bounds;
+                public Color[] _colorData;
+
+                public CollisionData(Rectangle bounds, Color[] colorData)
+                {
+                    this._bounds = bounds;
+                    this._colorData = colorData;
+                }
+            }
+
             bool IntersectsPixels(Rectangle rectangleA, Color[] dataA,
                                     Rectangle rectangleB, Color[] dataB)
             {

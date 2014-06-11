@@ -78,9 +78,9 @@ namespace ConsoleApplication1
             _levelOne.Draw();
             if( !Collision(_playerOne, _ground))
             {
-                
+                _playerOne.Draw(); //This actually draws the test image.
             }
-            _playerOne.Draw(); //This actually draws the test image.
+            
             _ground.Draw();
             _destroyer.Draw();
             _spriteBatch.End();

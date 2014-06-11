@@ -46,6 +46,8 @@
     <Compile Include="Classes\Core\Base Classes\Component.cs" />
     <Compile Include="Classes\Core\Base Classes\GameObject.cs" />
     <Compile Include="Classes\Core\Base Classes\Message.cs" />
+    <Compile Include="Classes\Core\Base Classes\TextureData.cs" />
+    <Compile Include="Classes\Core\Game World\CollisionHandler.cs" />
     <Compile Include="Classes\Core\Game World\World.cs" />
     <Compile Include="Classes\Core\Component Classes\GameObject Components\RenderingComponent.cs" />
     <Compile Include="Classes\Core\Component Classes\GameObject Components\InputComponent.cs" />
