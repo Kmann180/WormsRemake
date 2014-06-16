@@ -11,23 +11,28 @@ namespace ConsoleApplication1
 {
     public class Player : Sprite
     {
-        private bool OnGround = false;
+        public bool OnGround = false;
         public bool IsAlive = true;
-        public bool IsFiring = true;
-
-        public int[] WormOrder;
 
         private int JetpackFuel = 100;
         private int Health = 100;
+        public string sHealth;
 
         private float Velocity = 0;
 
         public Vector2 Movement { get; set; }
 
+        Player[] Worms = new Player[4];
+
         public Player (Texture2D texture, Vector2 position, SpriteBatch spritebatch)
             : base(texture, position, spritebatch)
         {
              
+        }
+
+        public void WormController(int WormNum, GameTime gameTime)
+        {
+            Worms[WormNum].Update(gameTime);
         }
 
         //applies gravity to the player at all times
@@ -52,7 +57,7 @@ namespace ConsoleApplication1
             if (Position.Y >= 1 && OnGround)
             {
                 OnGround = false;
-                Movement += new Vector2(0, -10);
+                Movement += new Vector2(0, -1);
 
                 Velocity = -5;
             }
@@ -98,10 +103,10 @@ namespace ConsoleApplication1
             TakeDamage();
 
             KeyboardState keyboardState = Keyboard.GetState();
-
             if (keyboardState.IsKeyDown(Keys.Left)) { Movement += new Vector2(-1, 0); }
             if (keyboardState.IsKeyDown(Keys.Right)) { Movement += new Vector2(1, 0); }
-            //if (keyboardState.IsKeyDown(Keys.Up)) { Jump(); }
+
+            if (keyboardState.IsKeyDown(Keys.Up)) { Jump(); }
             if (keyboardState.IsKeyDown(Keys.Space)) { JetPack(); }
             
             Movement -= Movement * new Vector2(.1f, .1f);

@@ -11,13 +11,13 @@ namespace ConsoleApplication1.Classes
     class Timer : Sprite
     {
         public GameTime gameTime;
-        private int TotalMinutes = 15;
-        public int MinutesRemaining;
 
-        //used to activate sudden death mode after the timer runs out
-        private int WaterLevel;
+        public int MinutesRemaining = 15;
+        public int SecondsRemaining = 60;
+        public int TurnRemaining = 45;
 
-        public int[] PlayerOrder;
+        public string TimerCharacters;
+        public string TurnCharacters;
 
 
         public Timer (Texture2D texture, Vector2 position, SpriteBatch spritebatch)
@@ -26,16 +26,34 @@ namespace ConsoleApplication1.Classes
 
         }
 
-        //tracks the timer containing the time remaining in the game
-        public void UpdateTimer()
+        public void TrackGameTime()
         {
-            int SecondsRemaining = 60 - (int)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (SecondsRemaining <= 0 && MinutesRemaining > 0)
+            if (SecondsRemaining - (int)gameTime.ElapsedGameTime.TotalSeconds <= 0 && MinutesRemaining > 0)
             {
                 gameTime.Equals(0);
                 MinutesRemaining--;
             }
+        }
+
+        public bool TimeLeftInTurn()
+        {
+            if (TurnRemaining - (int)gameTime.ElapsedGameTime.TotalSeconds <= 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        //tracks the timer containing the time remaining in the game
+        public void UpdateTimers()
+        {
+            TrackGameTime();
+            TimeLeftInTurn();
+            TimerCharacters = MinutesRemaining.ToString() + ":" + SecondsRemaining.ToString();
+            TurnCharacters = TurnRemaining.ToString();
         }
     }
 }

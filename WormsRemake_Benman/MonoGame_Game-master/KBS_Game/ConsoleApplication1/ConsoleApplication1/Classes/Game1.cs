@@ -1,8 +1,9 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using ConsoleApplication1.Classes;
 using Microsoft.Xna.Framework.Input;
 
@@ -12,17 +13,23 @@ namespace ConsoleApplication1
 
     public class Game1 : Game
     {
+        GameTime gameTime = new GameTime();
+        KeyboardState keyboardState = Keyboard.GetState();
 
         GraphicsDeviceManager graphics; // Came with the code, don't mess with it.
         SpriteBatch spriteBatch; // We use these to draw textures, every texture will "belong" to one of these.
 
-        Texture2D PlayerTexture; // texture for testing
-        Player PlayerOne; //sprite for testing, see Sprite.cs
+        SpriteFont Font;
 
-        Texture2D ReticleTexture;
-        Reticle AimingReticle;
+        Texture2D PlayerTexture;
+        Player PlayerOne;
 
-        TerrainDestroyer Destroyer;
+        Player[] Players = new Player[4];
+        public int TurnNumber = 0;
+
+        Timer GameTimer;
+
+        //TerrainDestroyer Destroyer;
 
         Level LevelOne;
 
@@ -31,6 +38,21 @@ namespace ConsoleApplication1
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content"; // This is a folder inside our project directory where all the images and shit go.
+        }
+
+        public void PlayerController()
+        {
+            Players[TurnNumber].Update(gameTime);
+
+            //if (!GameTimer.TimeLeftInTurn())
+            if (keyboardState.IsKeyDown(Keys.T))
+            {
+                TurnNumber++;
+                if (TurnNumber > 3)
+                {
+                    TurnNumber = 0;
+                }
+            }
         }
 
         //Don't mess with this yet.
@@ -45,16 +67,16 @@ namespace ConsoleApplication1
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //Font = Content.Load<SpriteFont>("MyFont");
+
             //load player data
             PlayerTexture = Content.Load<Texture2D>("RedPlayerWithShotgun");
-            PlayerOne = new Player(PlayerTexture, new Vector2(50, 50), spriteBatch); //Again, see Sprite.cs
-
-            //load data for aiming reticle
-            ReticleTexture = Content.Load<Texture2D>("Rocket");
-            AimingReticle = new Reticle(ReticleTexture, new Vector2(70, 50), spriteBatch);
-
+            for (int i = 0; i <= 3; i++)
+            {
+                Players[i] = new Player(PlayerTexture, new Vector2((i * 50), 50), spriteBatch); //Again, see Sprite.cs
+            }
             //create a terrain destroyer and the background for the level
-            Destroyer = new TerrainDestroyer(Content.Load<Texture2D>("deform"), new Vector2(50, 50), spriteBatch);
+            //Destroyer = new TerrainDestroyer(Content.Load<Texture2D>("deform"), new Vector2(50, 50), spriteBatch);
             LevelOne = new Level(Content.Load<Texture2D>("FirstLand"), spriteBatch);
 
             this.IsMouseVisible = true;
@@ -69,9 +91,27 @@ namespace ConsoleApplication1
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            if (PlayerOne.IsAlive)
+            //PlayerController();
+
+            for (int i = 0; i <= 3; i++)
             {
-                PlayerOne.Update(gameTime);
+                if (Players[i].Position.Y < 400)
+                {
+                    Players[i].ApplyGravity();
+                }
+                else
+                {
+                    Players[i].OnGround = true;
+                }
+            }
+
+            if (TurnNumber == 0)
+            {
+                Players[0].Update(gameTime);
+            }
+            if (TurnNumber > 10)
+            {
+                Players[1].Update(gameTime);
             }
         }
         
@@ -82,10 +122,15 @@ namespace ConsoleApplication1
             spriteBatch.Begin(); //Everything that belongs to "spriteBatch" will be drawn between the .begin() & .end()
             base.Draw(gameTime);
             LevelOne.Draw();
-            AimingReticle.Draw();
-            if (PlayerOne.IsAlive)
+
+            //draws the timer for the over all time
+            //spriteBatch.DrawString(Font, GameTimer.TimerCharacters, new Vector2(50, 50), Color.White);
+            for (int i = 0; i <= 3; i++)
             {
-                PlayerOne.Draw(); //This actually draws the test image.
+                if (Players[i].IsAlive)
+                {
+                    Players[i].Draw();
+                }
             }
             spriteBatch.End();
         }
